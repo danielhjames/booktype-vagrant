@@ -1,28 +1,28 @@
 # Booktype installation and development with Vagrant
 
-##want?
  - setup a Booktype Installation automatically in a virtual environment
  - having the booktype source and app files in you native OS of choice
  - reproducible portable development environments
  - plattform independent (linux/*nix(Theoretically windows http://rubyinstaller.org/))
  - http://vagrantup.com/
 
-##Requirements
+## Requirements
 
-###VirtualBox
+### VirtualBox
 download and install VirtualBox
 https://www.virtualbox.org/
 
-###rvm
+### rvm
 vagrant and chef are rubies. we could just use the ruby that is already installed on our host machine*.
 But ideally we keep even ruby versions and its gems within the user folder.
 or even in our project.
 
-rvm will help to do so :)
+rvm will help us to do so :)
 
 see http://beginrescueend.com/
 
     $ curl -L get.rvm.io | bash -s stable
+
 Reload your shell environment:
 
     $ source ~/.rvm/scripts/rvm
@@ -31,7 +31,9 @@ Find the requirements (follow the instructions):
 
     $ rvm requirements
 
-Install rvm    $ rvm install ruby-1.9.3-p125
+Install rvm
+
+    $ rvm install ruby-1.9.3-p125
 
 ### get Booktype source code (vagrant fork)
 
@@ -45,17 +47,18 @@ create an rvmc file within your booktype project directory, everytime we cd ther
 
     $ rvm --rvmrc --create 1.9.3@booktype
 
-###vagrant
+### vagrant
+
 see http://vagrantup.com/
 
-	$ which gem
+    $ which gem
 
 output should be the gem we installed through rvm
 for example /Users/leander/.rvm/rubies/ruby-1.9.3-p0/bin/gem
 
 not the ruby/gem that comes with your host os*
 
-	$ gem install vagrant
+    $ gem install vagrant
 
 download and add vanilla base box
 
@@ -63,12 +66,12 @@ download and add vanilla base box
 
 this will install a mostly vanilla flavoured ubuntu lts(lucid), with ruby preinstalled[…] ready to be provisioned by vagrant/Chef
 
-
-
 ## $ vagrant up or Booktype almost ready
+
 go to your Booktype source code cloned earlier
 
     $ cd Booktype/var/vagrant
+
 then fire up vagrant
 
     $ vagrant up
@@ -100,8 +103,6 @@ and do a
 
 	 $ sudo dhclient
 
--
-
 #### apt sources need update
 if provisioning (vagrant up) stops with
 
@@ -114,6 +115,7 @@ if provisioning (vagrant up) stops with
 ssh into the booktype VM with
 
     $ vagrant ssh
+
 and do an apt-get update manually
 
     $ sudo apt-get update
@@ -125,8 +127,5 @@ then exiting the vm shell to get back to your vagrant directory on the host os
 run provisioning again
 
     $ vagrant provision
-
-
-
 
 * using Os X 10.7.3 with Xcode 4.1
